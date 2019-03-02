@@ -1,3 +1,13 @@
 h1 {
     color: blueviolet;
 }
+
+div {
+    margin: 5px;
+    border: 1px solid chocolate;
+}
+
+span {
+    margin: 5px;
+    border: 1px solid salmon;
+}

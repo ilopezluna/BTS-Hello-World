@@ -1,6 +1,6 @@
 console.log("Hello from js");
 
-createTable(posts);
+createTable(posts, '');
 fillUserSelector(posts);
 
 var select = document.getElementById("user-filter");
@@ -16,7 +16,7 @@ function createTable(posts, userId) {
     for (var i = 0; i < posts.length; i++) {
 
         var post = posts[i];
-        if (userId == null || post.userId == userId) {
+        if (userId === '' || post.userId == userId) {
 
             var row = buildRow(post);
             table = table + row;
@@ -64,7 +64,7 @@ function fillUserSelector(posts) {
         }
     }
 
-    var options = "";
+    var options = "<option value=''>Show all</option>";
     for(var i = 0; i < userIds.length; i++) {
 
         options += "<option value='" + userIds[i] + "'>" + userIds[i] + "</option>";

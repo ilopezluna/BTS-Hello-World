@@ -3,16 +3,24 @@ console.log("Hello from js");
 createTable(posts);
 fillUserSelector(posts);
 
-function createTable(posts) {
+var select = document.getElementById("user-filter");
+select.addEventListener("change", filterTable);
 
+function createTable(posts, userId) {
+
+    console.log(userId);
     var table = "<table>";
 
     table = table + buildHeader();
 
     for (var i = 0; i < posts.length; i++) {
 
-        var row = buildRow(posts[i]);
-        table = table + row;
+        var post = posts[i];
+        if (userId == null || post.userId == userId) {
+
+            var row = buildRow(post);
+            table = table + row;
+        }
     }
 
     table = table + "</table>";
@@ -63,4 +71,12 @@ function fillUserSelector(posts) {
     }
 
     document.getElementById("user-filter").innerHTML = options;
+}
+
+function filterTable() {
+
+    var select = document.getElementById("user-filter");
+    var selectedValue = select.options[select.selectedIndex].value;
+
+    createTable(posts, selectedValue);
 }
